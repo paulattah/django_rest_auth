@@ -11,11 +11,13 @@ https://docs.djangoproject.com/en/5.0/ref/settings/
 """
 import environ
 from pathlib import Path
+import os
 
 env = environ.Env(
      # set casting, default value
         DEBUG=(bool, False),
 )
+
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -32,6 +34,8 @@ DEBUG = env("DEBUG")
 
 ALLOWED_HOSTS = []
 
+AUTH_USER_MODEL="accounts.User"
+
 
 # Application definition
 
@@ -42,7 +46,7 @@ INSTALLED_APPS = [
     "django.contrib.sessions",
     "django.contrib.messages",
     "django.contrib.staticfiles",
-    "social_accounts",
+    "social_account",
     "accounts",
     "rest_framework",
     "corsheaders"
@@ -131,3 +135,10 @@ STATIC_URL = "static/"
 # https://docs.djangoproject.com/en/5.0/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
+
+EMAIL_HOST = 'sandbox.smtp.mailtrap.io'
+EMAIL_HOST_USER = '6b71424c54eb1c'
+EMAIL_HOST_PASSWORD = 'ec93ef4c880816'
+EMAIL_PORT = '2525'
+DEFAULT_FROM_EMAIL="ATTAHATTA37@gmail.com"
+EMAIL_USE_TLS=True
